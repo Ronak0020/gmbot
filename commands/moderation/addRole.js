@@ -9,7 +9,7 @@ module.exports = {
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply(`**You do not have permission to use this command!**\n Please contact a staff member.`);
         let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-        if (!rMember) return errors.cantfindUser(message.channel);
+        if (!rMember) return message.channel.send(`Cant fine the user! please try again!`);
         let role = args.join(" ").slice(22);
         if (!role) return message.reply("Specify a role!");
         let gRole = message.guild.roles.find(`name`, role);
