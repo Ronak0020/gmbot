@@ -19,7 +19,7 @@ module.exports = {
 		"`no no no`"
 		];
 		let question = message.content.split(' ').slice(1).join(' ');
-if (!question) { return message.reply('What question should I answer on?\n\**Usage:** `~8ball is Blue Malgeran is sexy af?`');
+if (!question) { return message.reply('What question should I answer on?\n\Use `_help 8ball` for more information');
 }
 message.channel.send({embed: {
 	color: 3447003,
