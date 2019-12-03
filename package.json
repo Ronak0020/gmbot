@@ -18,7 +18,8 @@
     "fs": "0.0.1-security",
     "ms": "^2.1.2",
     "random-puppy": "^1.1.0",
-    "snekfetch": "^4.0.4"
+    "snekfetch": "^4.0.4",
+    "math-expression-evaluator": "^1.2.17"
   },
   "engines": {
     "node": "12.13.1"
