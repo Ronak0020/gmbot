@@ -33,6 +33,11 @@ client.on("ready", () => {
     giveaways.launch(client, {
         updateCountdownEvery: 5000,
         botsCanWin: false,
+        ignoreIfHasPermission: [
+            "MANAGE_MESSAGES",
+            "MANAGE_GUILD",
+            "ADMINISTRATOR"
+        ],
         embedColor: "#FF0000",
         embedColorEnd: "#000000",
         reaction: "🎉",
