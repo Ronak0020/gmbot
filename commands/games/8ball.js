@@ -15,7 +15,7 @@ module.exports = {
 		"`Sometimes`",
 		"`Okay`",
 		"`HELL NO`",
-		"`FUCK YEAH`",
+		"`OH YEAH!`",
 		"`no no no`"
 		];
 		let question = message.content.split(' ').slice(1).join(' ');
