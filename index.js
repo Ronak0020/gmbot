@@ -1,6 +1,7 @@
 const { Client, Collection } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
+const giveaways = require("discord-giveaways");
 
 const client = new Client({
     disableEveryone: true
@@ -28,6 +29,14 @@ client.on("ready", () => {
             name: "me getting developed by Ron!",
             type: "WATCHING"
         }
+    });
+    giveaways.launch(client, {
+        updateCountdownEvery: 5000,
+        botsCanWin: false,
+        embedColor: "#FF0000",
+        embedColorEnd: "#000000",
+        reaction: "🎉",
+        storage: __dirname+"/giveaways.json"
     }); 
 });
 
@@ -51,4 +60,4 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-client.login(process.env.token);
+client.login("NjM4NjMzNzQwODQ2NzU5OTM2.XeeM2g.y-6JRmhaQDKtp5NMkrPhyqgA1-U");

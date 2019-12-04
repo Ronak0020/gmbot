@@ -4,7 +4,7 @@ module.exports = {
 	name: "roll",
 	aliases: ["roll", "die"],
 	description: "Generate a random number!",
-	category: "fun",
+	category: "games",
 	usage: "[number]",
 	run: async (client, message, args) => {
 		let rollnumber = message.content.split(' ').slice(1).join(' ');

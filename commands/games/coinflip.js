@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: "coinflip",
 	aliases: ["coinflip", "cf", "flip"],
-	category: "fun",
+	category: "games",
 	description: "Is it heads? Or its Tails? Let's check it!'",
 	run: async (client, message, args) => {
 		let answers = [
