@@ -9,16 +9,18 @@ module.exports = {
 	run: async (client, message, args) => {
       try {
       const author = message.author.username;
-      const user = message.mentions.users.first().username;
+      const user = message.mentions.users.first();
+      if(!user) return message.reply("Please mention a person whom you wanna hug! :3");
       const data = await (await fetch('https://nekos.life/api/v2/img/hug')).json();
       if (!(data || data.url)) return message.reply('NO_DATA');
       const hugie = new Discord.RichEmbed()
-          .setTitle(user + "has been hugged by" + author, true)
+          .setTitle(`${user} has been hugged by ${author}`, true)
           .setImage(data.url)
+          .setColor(0xFACFCA)
            message.channel.send(hugie);
     } catch (error) {
       console.log(error);
-      return message.reply('REQUEST_FAILED');
+      return message.reply('Please try again!');
     }
 		}
 	}
