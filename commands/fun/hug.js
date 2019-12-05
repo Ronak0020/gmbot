@@ -17,9 +17,10 @@ const user = message.mentions.users.first();
 if(!user) return message.reply('please mention someone! Whom you wanna hug?');
 Tenor.Search.Random("anime-hug", "1").then(Results => {
 	Results.forEach(Post => {
+                const hugie = new Discord.Attachment(Post.url);
 		const img = new Discord.RichEmbed()
 		.setDescription(`**${user.tag}**  Was hugged by  **${message.author.tag}**! :3`)
-		.setImage(Post.url)
+		.setImage(hugie)
 		.setColor(0xFFACFA)
 		message.channel.send(img)
 		});
