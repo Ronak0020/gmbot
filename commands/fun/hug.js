@@ -19,7 +19,7 @@ Tenor.Search.Random("anime-hug", "1").then(Results => {
 	Results.forEach(Post => {
 		const img = new Discord.RichEmbed()
 		.setDescription(`**${user.tag}**  Was hugged by  **${message.author.tag}**! :3`)
-		.addField("GIF", Post.url)
+		.setImage(`${Post.url}`)
 		.setColor(0xFFACFA)
 		message.channel.send(img)
 		});
