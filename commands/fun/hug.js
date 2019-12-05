@@ -20,7 +20,7 @@ module.exports = {
            message.channel.send(hugie);
     } catch (error) {
       console.log(error);
-      return message.reply('Please try again!');
+      return message.reply('Please mention a person whom you wanna hug! :3');
     }
 		}
 	}
