@@ -9,14 +9,14 @@ module.exports = {
 	run: async (client, message, args) => {
       try {
       const author = message.author.username;
-      const user = message.mentions.users.first();
+      const user = message.mentions.users.first().username;
       const data = await (await fetch('https://nekos.life/api/v2/img/hug')).json();
       if (!(data || data.url)) return message.reply('NO_DATA');
-      message.genEmbed()
-          .setEmoteTitle(author, user, 'HUGGING', true)
+      const hugie = new Discord.RichEmbed()
+          .setTitle(user + "has been hugged by" + author, true)
           .setProvidedBy('nekos.life')
           .setImage(data.url)
-          .send();
+           message.channel.send(hugie);
     } catch (error) {
       console.log(error);
       return message.reply('REQUEST_FAILED');
