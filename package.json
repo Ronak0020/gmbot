@@ -22,7 +22,8 @@
     "random-puppy": "^1.1.0",
     "randomstrings": "0.0.2",
     "snekfetch": "^4.0.4",
-    "tenorjs": "^1.0.7"
+    "tenorjs": "^1.0.7",
+    "node-fetch": "^2.6.0"
   },
   "engines": {
     "node": "12.13.1"
