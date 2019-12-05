@@ -20,7 +20,7 @@ Tenor.Search.Random("anime-hug", "1").then(Results => {
                 const hugie = new Discord.Attachment(Post.url);
 		const img = new Discord.RichEmbed()
 		.setDescription(`**${user.tag}**  Was hugged by  **${message.author.tag}**! :3`)
-		.setImage(hugie)
+		.setURL(hugie)
 		.setColor(0xFFACFA)
 		message.channel.send(img)
 		});
