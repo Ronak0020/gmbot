@@ -14,7 +14,6 @@ module.exports = {
       if (!(data || data.url)) return message.reply('NO_DATA');
       const hugie = new Discord.RichEmbed()
           .setTitle(user + "has been hugged by" + author, true)
-          .setProvidedBy('nekos.life')
           .setImage(data.url)
            message.channel.send(hugie);
     } catch (error) {
