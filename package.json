@@ -19,11 +19,13 @@
     "fs": "0.0.1-security",
     "math-expression-evaluator": "^1.2.17",
     "ms": "^2.1.2",
+    "node-fetch": "^2.6.0",
     "random-puppy": "^1.1.0",
     "randomstrings": "0.0.2",
     "snekfetch": "^4.0.4",
     "tenorjs": "^1.0.7",
-    "node-fetch": "^2.6.0"
+    "unscramble": "0.0.1-v",
+    "weather.js": "^0.1.0"
   },
   "engines": {
     "node": "12.13.1"

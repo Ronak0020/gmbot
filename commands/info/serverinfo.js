@@ -46,7 +46,7 @@ function checkDays(date) {
         .setColor(0xAAFCCA)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        .setFooter("Made by Ron")
+        .setFooter(message.author.displayAvatarURL, message.author.username)
     message.channel.send(embed);
 }
 }

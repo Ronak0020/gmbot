@@ -9,6 +9,9 @@ module.exports = {
     description: "Create giveaways for your server members!",
     usage: "<winners> <duration> <prize>",
     run: async (client, message, args) => {
+        if (message.deletable) {
+            message.delete();
+        }
         if(!message.member.hasPermission(['MANAGE_MESSAGES'])) return message.reply('You do not have permission to start/manage a giveaway!');
         giveaways.start(message.channel, {
             time: ms(args[0]),
