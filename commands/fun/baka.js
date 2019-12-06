@@ -14,7 +14,7 @@ module.exports = {
       const data = await (await fetch('https://nekos.life/api/v2/img/baka')).json();
       if (!(data || data.url)) return message.reply('NO_DATA');
       const bakap = new Discord.RichEmbed()
-          .setTitle(`**${author}** is saying ${user} a BAKA! ಠ_ಠ`, true)
+          .setTitle(`**${author}** is saying **${user}** a BAKA! ಠ_ಠ`, true)
           .setImage(data.url)
           .setColor(0xFACFCA)
            message.channel.send(bakap);
