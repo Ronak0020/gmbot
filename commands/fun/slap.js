@@ -7,6 +7,9 @@ module.exports = {
 	description: "Slap someone! (>▽<)",
         usage: "<user mention whom you wanna slap>",
 	run: async (client, message, args) => {
+        if (message.deletable) {
+            message.delete();
+        }
       try {
       const author = message.author.username;
       const user = message.mentions.users.first().username;
@@ -16,7 +19,7 @@ module.exports = {
       const slapie = new Discord.RichEmbed()
           .setTitle(`**${user}** has been slapped by **${author}** (｡•́︿•̀｡)`, true)
           .setImage(data.url)
-          .setColor(0xFACFCA)
+          .setColor(0xACFFCA)
            message.channel.send(slapie);
     } catch (error) {
       console.log(error);
