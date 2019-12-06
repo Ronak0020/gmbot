@@ -43,8 +43,6 @@ function checkDays(date) {
         .addField("Roles", message.guild.roles.size, true)
         .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
         .setThumbnail(message.guild.iconURL)
-    message.channel.send(embed) {
-catch(console.error)
-}
+    message.channel.send(embed);
 }
 }
