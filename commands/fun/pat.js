@@ -7,6 +7,9 @@ module.exports = {
 	description: "Pat someone! :3",
         usage: "<user mention whom you wanna pat>",
 	run: async (client, message, args) => {
+        if (message.deletable) {
+            message.delete();
+        }
       try {
       const author = message.author.username;
       const user = message.mentions.users.first().username;
