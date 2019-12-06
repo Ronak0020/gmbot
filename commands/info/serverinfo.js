@@ -30,6 +30,7 @@ function checkDays(date) {
         "hongkong": ":flag_hk: Hong Kong",
         "russia": ":flag_ru: Russia",
         "southafrica": ":flag_za:  South Africa"
+        "india": ":flag_in: India"
     };
     const embed = new Discord.RichEmbed()
         .setAuthor(message.guild.name, message.guild.iconURL)
