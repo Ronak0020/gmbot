@@ -7,6 +7,9 @@ module.exports = {
 	description: "Call someone a BAKA!",
         usage: "<user mention whom you are saying BAKA>",
 	run: async (client, message, args) => {
+        if (message.deletable) {
+            message.delete();
+        }
       try {
       const author = message.author.username;
       const user = message.mentions.users.first().username;
