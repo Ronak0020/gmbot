@@ -30,7 +30,8 @@ function checkDays(date) {
         "hongkong": ":flag_hk: Hong Kong",
         "russia": ":flag_ru: Russia",
         "southafrica": ":flag_za:  South Africa",
-        "india": ":flag_in: India"
+        "india": ":flag_in: India",
+        "europe": ":flag_eu: Europe"
     };
     const embed = new Discord.RichEmbed()
         .setAuthor(message.guild.name, message.guild.iconURL)
@@ -45,6 +46,7 @@ function checkDays(date) {
         .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
         .setColor(0xAAFCCA)
         .setTimestamp()
+        .setThumbnail(message.guild.iconURL)
         .setFooter(message.author.username, message.author.displayAvatarURL)
     message.channel.send(embed);
 }
