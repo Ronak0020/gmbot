@@ -19,6 +19,7 @@ module.exports = {
 function getAll(client, message) {
     const embed = new RichEmbed()
         .setColor("RANDOM")
+        .setDescription("Use `_help <command name>` for command info!")
 
     const commands = (category) => {
         return client.commands
@@ -31,7 +32,7 @@ function getAll(client, message) {
         .map(cat => stripIndents`**${cat[0].toUpperCase() + cat.slice(1)}** \n${commands(cat)}`)
         .reduce((string, category) => string + "\n" + category);
 
-    return message.channel.send(embed.setDescription(info));
+    return message.channel.send(embed.setTitle(info));
 }
 
 function getCMD(client, message, input) {
