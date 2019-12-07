@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
 	name: "weather",
-	aliases: ["weather", "wr",],
+	aliases: ["weather"],
 	category: "info",
 	description: "Check the weather of your city.",
 	usage: "<city name>",
