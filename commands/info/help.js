@@ -19,7 +19,7 @@ module.exports = {
 function getAll(client, message) {
     const embed = new RichEmbed()
         .setColor("RANDOM")
-        .setDescription("Use `_help <command name>` for command info!")
+        .addField("Help", "Use `_help <command name>` for command info!")
 
     const commands = (category) => {
         return client.commands
