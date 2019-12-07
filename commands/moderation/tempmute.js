@@ -8,10 +8,6 @@ module.exports = {
     usage: "<@user> <s/m/h/d>",
     run: async (client, message, args) => {
     	if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No can do.");
-  if(args[0] == "help"){
-    message.reply("Usage: !tempmute <user> <1s/m/h/d>");
-    return;
-  }
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!tomute) return message.reply("Couldn't find user.");
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");
@@ -58,7 +54,7 @@ module.exports = {
   .addField("Length", mutetime)
   .addField("Reason", reason);
 
-  let incidentschannel = message.guild.channels.find(`name`, "reports");
+  let incidentschannel = message.guild.channels.find(`name`, "》staff-logs");
   if(!incidentschannel) return message.reply("Please create a reports channel first!");
   incidentschannel.send(muteembed);
 
