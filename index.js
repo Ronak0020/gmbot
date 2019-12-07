@@ -40,7 +40,7 @@ client.on("ready", () => {
         ],
         embedColor: "#FF0000",
         embedColorEnd: "#000000",
-        reaction: "🎉",
+        reaction: "❄️",
         storage: __dirname+"/giveaways.json"
     }); 
 });
