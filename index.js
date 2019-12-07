@@ -26,7 +26,7 @@ client.on("ready", () => {
     client.user.setPresence({
         status: "online",
         game: {
-            name: "❄️Merry Christmas!❄️",
+            name: "❄️Merry Christmas!❄️ || **_help**",
             type: "WATCHING"
         }
     });
