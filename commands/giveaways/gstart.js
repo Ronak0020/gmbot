@@ -18,10 +18,10 @@ module.exports = {
             prize: args.slice(2).join(" "),
             winnersCount: parseInt(args[1]),
             messages: {
-                giveaway: "🎉🎉 **GIVEAWAY** 🎉🎉",
-                giveawayEnded: "🎉🎉 **GIVEAWAY ENDED** 🎉🎉",
+                giveaway: "❄️❄️ **GIVEAWAY** ❄️❄️",
+                giveawayEnded: "❄️❄️ **GIVEAWAY ENDED** ❄️❄️",
                 timeRemaining: "Time remaining: **{duration}**!",
-                inviteToParticipate: "React with 🎉 to participate!",
+                inviteToParticipate: "React with ❄️ to participate!",
                 winMessage: "Congratulations, {winners}! You won **{prize}**!",
                 embedFooter: "Giveaways",
                 noWinner: "Giveaway cancelled, no valid participations.",
