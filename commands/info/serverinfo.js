@@ -44,7 +44,7 @@ function checkDays(date) {
         .addField("Roles", message.guild.roles.size, true)
         .addField("Creation Date", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`, true)
         .setColor(0xAAFCCA)
-        .setThumbnail(message.guild.iconURL)
+        .setThumbnail(message.guild.icon)
         .setTimestamp()
         .setFooter(message.author.displayAvatarURL, message.author.username)
     message.channel.send(embed);
