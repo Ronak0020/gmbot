@@ -38,8 +38,8 @@ client.on("ready", () => {
             "MANAGE_GUILD",
             "ADMINISTRATOR"
         ],
-        embedColor: "#FF0000",
-        embedColorEnd: "#000000",
+        embedColor: "#07F7FD",
+        embedColorEnd: "#FFFFFF",
         reaction: "❄️",
         storage: __dirname+"/giveaways.json"
     }); 
