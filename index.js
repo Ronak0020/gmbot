@@ -30,6 +30,21 @@ client.on("ready", () => {
             type: "WATCHING"
         }
     });
+
+client.on('guildMemberAdd', async member => {
+			const channel = member.guild.channels.find(ch => ch.name === 'general-chat');
+			if(!channel) return;
+			const wlcm = new RichEmbed()
+			.setTitle(`New Member! ***${member.user.tag}*** Welcome to __${member.guild.name}__\nHave a Great time here! (≧▽≦)`)
+			.setColor(0xFCAFCA)
+			.setThumbnail(member.user.displayAvatarURL)
+			.addField("Few Important Channel to look on:", "<#632577411338469418>, <#645584771547791390>, <#638764705044889609>, <#639921529416843295>, <#646556472204984340> ")
+			.setImage("https://media.tenor.com/images/4a070a74048498dda7b5c5215d420176/tenor.gif")
+			.setTimestamp()
+			.setFooter(client.user.username, client.user.displayAvatarURL)
+			channel.send(`**${member}** has joined **${member.guild.name}!** Let\'s Welcome them!`, wlcm)
+		});
+
     giveaways.launch(client, {
         updateCountdownEvery: 5000,
         botsCanWin: false,
