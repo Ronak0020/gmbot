@@ -15,7 +15,7 @@ module.exports = {
         var output = await eco.FetchBalance(message.author.id)
         if (output.balance < amount) return message.reply('You have fewer coins than the amount you want to gamble!')
           if (talkedRecently.has(message.author.id)) {
-            message.channel.send("You need to wait for 10 minutes before you can use slot machine again, " + message.author);
+            message.channel.send("You need to wait for 30 seconds before you can use slot machine again, " + message.author);
     } else {
 
         var gamble = await eco.Slots(message.author.id, amount, {
