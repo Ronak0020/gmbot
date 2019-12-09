@@ -80,4 +80,4 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-client.login(process.env.token);
+client.login("NjM4NjMzNzQwODQ2NzU5OTM2.Xe4cLw.pv4ST7UDuJSf71ovZvGYGvfK0BM");
