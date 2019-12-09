@@ -9,8 +9,8 @@ module.exports = {
     category: "economy",
     run: async (client, message, args) => {
         var output = await eco.Work(message.author.id, {
-            failurerate: 10,
-            money: Math.floor(Math.random() * 500),
+            failurerate: 50,
+            money: Math.floor(Math.random() * 150),
             jobs: ['cashier', 'shopkeeper', 'accountant', 'rag picker']
           })
           if (talkedRecently.has(message.author.id)) {
