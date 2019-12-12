@@ -26,7 +26,8 @@
     "snekfetch": "^4.0.4",
     "tenorjs": "^1.0.7",
     "unscramble": "0.0.1-v",
-    "weather.js": "^0.1.0"
+    "weather.js": "^0.1.0",
+    "urban-dictionary": "^2.2.1"
   },
   "engines": {
     "node": "12.13.1"
