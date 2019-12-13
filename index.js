@@ -2,6 +2,9 @@ const { Client, Collection, RichEmbed } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
 const giveaways = require("discord-giveaways");
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Ronak0020:<password>@gmbotgiveaway-vljml.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const mclient = new MongoClient(uri, { useNewUrlParser: true });
 
 const client = new Client({
     disableEveryone: true
@@ -56,8 +59,11 @@ client.on('guildMemberAdd', async member => {
         embedColor: "#07F7FD",
         embedColorEnd: "#FFFFFF",
         reaction: "❄️",
-        storage: __dirname+"/giveaways.json"
-    }); 
+        storage: mclient.connect(err => {
+            const collection = mclient.db("test").collection("devices");
+            mclient.close();
+          })
+    });
 });
 
 client.on("message", async message => {
