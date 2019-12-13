@@ -60,7 +60,7 @@ client.on('guildMemberAdd', async member => {
         embedColorEnd: "#FFFFFF",
         reaction: "❄️",
         storage: mclient.connect(err => {
-            const collection = mclient.db("giveaways").collection("gmbot");
+            const collection = mclient.db("gmbot").collection("giveaways");
             mclient.close();
           })
     });
