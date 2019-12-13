@@ -4,7 +4,7 @@ const fs = require("fs");
 const giveaways = require("discord-giveaways");
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Ronak0020:<password>@gmbotgiveaway-vljml.gcp.mongodb.net/test?retryWrites=true&w=majority";
-const mclient = new MongoClient(uri, { useNewUrlParser: true });
+const mclient = new MongoClient(uri, { useNewUrlParser: true }, { useUnifiedTopology: true });
 
 const client = new Client({
     disableEveryone: true
