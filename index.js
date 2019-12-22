@@ -32,7 +32,7 @@ client.on("ready", () => {
     });
 
 client.on('guildMemberAdd', async member => {
-			const channel = member.guild.channels.find(ch => ch.name === 'general-chat');
+			const channel = member.guild.channels.find(ch => ch.name === '');
 			if(!channel) return;
 			const wlcm = new RichEmbed()
 			.setTitle(`New Member! ***${member.user.tag}*** Welcome to __${member.guild.name}__\nHave a Great time here! (≧▽≦)`)
