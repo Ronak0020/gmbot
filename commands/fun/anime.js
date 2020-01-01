@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const animesf = require('snekfetch');
 
 module.exports = {
-	name: "anime",
+	name: "animeimage",
+	aliases: ["animeimg", "imgani"],
 	category: "fun",
 	description: "Check out some amazing Anime pics!",
 	run: async (client, message, args) => {
