@@ -10,6 +10,7 @@ mongoose.connect(dbUrl, {
 });
 
 const Money = require("../models/money.js");
+const Module = require("../models/module.js");
 
 module.exports = {
     run: async (client, message) => {
