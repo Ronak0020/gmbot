@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
-const dbUrl = "mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority";
+const dbUrl = process.env.mongodb;
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
