@@ -4,16 +4,11 @@ const cooldowns = new Discord.Collection();
 const mongoose = require("mongoose");
 let coinCooldown = new Set();
 
-const dbUrl = process.env.mongodb;
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true
-});
-
 const Money = require("../models/money.js");
 const Module = require("../models/module.js");
 
 module.exports = {
-    run: async (client, message) => {
+    run: async (client, message, args) => {
     if (message.author.bot) return;
 
     if(message.channel.type === "text") {
@@ -23,8 +18,7 @@ module.exports = {
             if(!s) {
                 const newServer = new Module({
                     guildID: message.guild.id,
-                    levelModule: "off",
-                    coinModule: "off"
+                    coinModule: "on"
                 });
                 await newServer.save().catch(e => console.log(e));
                 return;
