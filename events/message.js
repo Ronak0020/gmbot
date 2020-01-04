@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 let coinCooldown = new Set();
 const cooldowns = new Discord.Collection();
 
-const dbUrl = "mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority";
+const dbUrl = process.env.mongodb;
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
 });
