@@ -3,7 +3,6 @@ const cooldowns = new Discord.Collection();
 
 const mongoose = require("mongoose");
 let coinCooldown = new Set();
-const cooldowns = new Discord.Collection();
 
 const dbUrl = process.env.mongodb;
 mongoose.connect(dbUrl, {
@@ -59,33 +58,6 @@ module.exports = {
             }
         }
     }
-    if (!cooldowns.has(command.name)) {
-        cooldowns.set(command.name, new Discord.Collection());
-    }
-
-    const now = Date.now();
-    const timestamps = cooldowns.get(command.name);
-    const cooldownAmount = command.cooldown;
-
-    if(message.author.id !== '414764511489294347') {
-        if (!timestamps.has(message.author.id)) {
-            timestamps.set(message.author.id, now);
-            setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-        } else {
-            const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-            if (now < expirationTime) {
-            const timeLeft = (expirationTime - now) / 1000;
-            if(command.cooldownReason) {
-                let t = `${timeLeft.toFixed(1)} seconds`;
-                return store.cooldown(message, command.cooldown, command.cooldownReason);
-            }
-                return message.channel.send(`Slow it down buddy. You have to wait ${timeLeft.toFixed(1)} more seconds before using \`${command.name}\` again.`);
-            }
-
-            timestamps.set(message.author.id, now);
-            setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-        }
-    }
+    
 }
 }
