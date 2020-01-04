@@ -1,7 +1,6 @@
 const { Client, Collection, RichEmbed } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
-const configp = require('./config.json');
 const giveaways = require("discord-giveaways");
 const Levels = require("discord-xp");
 Levels.setURL("mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority");
