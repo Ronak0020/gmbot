@@ -54,7 +54,7 @@ module.exports = {
         QUESTION: ${q.question}
         **You have 30 seconds to answer!**
         
-              - ${answrs.join(`\n - `)}
+          - ${answrs.join(`\n - `)}
                 `)
                 .setColor("BLURPLE")
                 .setTimestamp();

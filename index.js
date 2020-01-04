@@ -29,13 +29,13 @@ client.on("ready", () => {
     client.user.setPresence({
         status: "online",
         game: {
-            name: "❄️Merry Christmas!❄️ || **_help**",
+            name: "_help **||** Developer: Ronak",
             type: "WATCHING"
         }
     });
 
 client.on('guildMemberAdd', async member => {
-			const channel = member.guild.channels.find(ch => ch.name === 'general-chat');
+			const channel = member.guild.channels.find(ch => ch.name === '');
 			if(!channel) return;
 			const wlcm = new RichEmbed()
             .setTitle(`New Member!`)
@@ -95,4 +95,4 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-client.login("NjM4NjMzNzQwODQ2NzU5OTM2.XfNWTA.JciAenvm4UR_yy18Vj0xzugaSpg");
+client.login(process.env.token);
