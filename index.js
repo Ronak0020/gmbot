@@ -1,5 +1,4 @@
 const { Client, Collection, RichEmbed } = require("discord.js");
-const { config } = require("dotenv");
 const fs = require("fs");
 const giveaways = require("discord-giveaways");
 const Levels = require("discord-xp");
@@ -13,10 +12,6 @@ client.commands = new Collection();
 client.aliases = new Collection();
 
 client.categories = fs.readdirSync("./commands/");
-
-config({
-    path: __dirname + "/.env"
-});
 
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
