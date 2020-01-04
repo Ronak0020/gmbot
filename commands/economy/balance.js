@@ -1,7 +1,7 @@
 const Discord = require ("discord.js");
 const mongoose = require("mongoose");
 const Money = require("../../models/money.js");
-const dbUrl = "mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority";
+const dbUrl = process.env.mongodb;
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
@@ -16,7 +16,7 @@ module.exports = {
 	run: async(client, message, args) => {
         let target = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
 
-    if(target.user.bot) return reply(`Seems like **${target.user.username}** is a bot.`);
+    if(target.user.bot) return message.channel.send(`Seems like **${target.user.username}** is a bot.`);
 
     Money.findOne({
         userID: target.user.id,
@@ -32,7 +32,7 @@ module.exports = {
             balanceEmbed.setDescription(`- ${target.user.tag} • ${money.coins.toLocaleString()} Coins`)
         }
 
-        message.reply(balanceEmbed);
+        message.channel.send(balanceEmbed);
     });
     },
 };
