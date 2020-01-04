@@ -1,26 +1,39 @@
 const Discord = require("discord.js");
-const eco = require("discord-economy");
+const mongoose = require("mongoose");
+const dbUrl = "mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority";
+
+mongoose.connect(dbUrl, {
+    useNewUrlParser: true
+});
+const Money = require("../../models/money.js");
 
 module.exports = {
-    name: "daily",
+    name: 'daily',
+  	description: 'Get your daily bonus.',
     category: "economy",
-    description: "Collect your daily coins!",
-    run: async (client, message, args) => {
-        var output = await eco.Daily(message.author.id)
-    if (output.updated) {
-      var profile = await eco.AddToBalance(message.author.id, 500)
-      const DAILY = new Discord.RichEmbed()
-      .setColor(0xCAFFFC)
-        .setTimestamp()
-        .setThumbnail(message.author.displayAvatarURL)
-        .setTitle("You successfully claimed your daily coins!")
-        .addField("Gained Amount:", "500 coins")
-        .addField("Total Available amount:", profile.newbalance + " coins")
-        .setFooter(client.user.username, client.user.iconURL)
-      message.reply(DAILY);
- 
-    } else {
-      message.channel.send(`Sorry, you already claimed your daily coins!\nBut no worries, over ${output.timetowait} you can daily again!`)
-    }
-    }
-}
+	run: async(client, message, args) => {
+
+        let dailyCoins = 250;
+
+        Money.findOne({
+            userID: message.author.id,
+            serverID: message.guild.id
+        }, async (err, money) => {
+            if(err) console.log(err);
+            if(!money) {
+                const newMoney = new Money({
+                    userID: message.author.id,
+                    serverID: message.guild.id,
+                    coins: dailyCoins
+                });
+
+                await newMoney.save().catch(e => console.log(e));
+            } else if(money) {
+                money.coins = money.coins + dailyCoins;
+                await money.save().catch(e => console.log(e));
+            }
+        });
+
+        message.channel.send(`${message.author.username} You got a daily bonus of ${dailyCoins} coins.`);
+    },
+};

@@ -1,10 +1,10 @@
 const { Client, Collection, RichEmbed } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
+const configp = require('./config.json');
 const giveaways = require("discord-giveaways");
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Ronak0020:<password>@gmbotgiveaway-vljml.gcp.mongodb.net/test?retryWrites=true&w=majority";
-const mclient = new MongoClient(uri, { useNewUrlParser: true }, { useUnifiedTopology: true });
+const Levels = require("discord-xp");
+Levels.setURL("mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority");
 
 const client = new Client({
     disableEveryone: true
@@ -38,7 +38,8 @@ client.on('guildMemberAdd', async member => {
 			const channel = member.guild.channels.find(ch => ch.name === 'general-chat');
 			if(!channel) return;
 			const wlcm = new RichEmbed()
-			.setTitle(`New Member! ***${member.user.tag}*** Welcome to __${member.guild.name}__\nHave a Great time here! (≧▽≦)`)
+            .setTitle(`New Member!`)
+            .setDescription(`***${member.user.tag}*** Welcome to __${member.guild.name}__\nHave a Great time here! (≧▽≦)`)
 			.setColor(0xFCAFCA)
 			.setThumbnail(member.user.displayAvatarURL)
 			.addField("Few Important Channel to look on:", "<#632577411338469418>, <#645584771547791390>, <#638764705044889609>, <#639921529416843295>, <#646556472204984340> ")
@@ -46,8 +47,7 @@ client.on('guildMemberAdd', async member => {
 			.setTimestamp()
 			.setFooter(client.user.username, client.user.displayAvatarURL)
 			channel.send(`**${member}** has joined **${member.guild.name}!** Let\'s Welcome them!`, wlcm)
-		});
-
+        });
     giveaways.launch(client, {
         updateCountdownEvery: 5000,
         botsCanWin: false,
@@ -59,15 +59,24 @@ client.on('guildMemberAdd', async member => {
         embedColor: "#07F7FD",
         embedColorEnd: "#FFFFFF",
         reaction: "❄️",
-        storage: mclient.connect(err => {
-            const collection = mclient.db("test").collection("devices");
-            mclient.close();
-          })
+        storage: __dirname + "/giveaways.json"
+          });
     });
-});
+
+    client.on("message", async message => {
+        if (!message.guild) return;
+        if (message.author.bot) return;
+        
+        const randomAmountOfXp = Math.floor(Math.random() * 15) + 1;
+        const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+        if (hasLeveledUp) {
+          const user = await Levels.fetch(message.author.id, message.guild.id);
+          message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
+        }
+      });
 
 client.on("message", async message => {
-    const prefix = "_";
+    const prefix = '_';
 
     if (message.author.bot) return;
     if (!message.guild) return;
@@ -86,4 +95,4 @@ client.on("message", async message => {
         command.run(client, message, args);
 });
 
-client.login(process.env.token);
+client.login("NjM4NjMzNzQwODQ2NzU5OTM2.XfNWTA.JciAenvm4UR_yy18Vj0xzugaSpg");

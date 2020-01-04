@@ -1,19 +1,38 @@
-const Discord = require("discord.js");
-const eco = require("discord-economy");
+const Discord = require ("discord.js");
+const mongoose = require("mongoose");
+const Money = require("../../models/money.js");
+const dbUrl = "mongodb+srv://ronak:123ronak@gmbot-btqml.mongodb.net/test?retryWrites=true&w=majority";
+
+mongoose.connect(dbUrl, {
+    useNewUrlParser: true
+});
 
 module.exports = {
-    name: "balance",
-    aliases: ["balance", "bal"],
-    description: "Check your total money!",
+    name: 'balance',
+	description: 'Check user\'s balance for current server.',
+    aliases: [`bal`],
     category: "economy",
-    run: async (client, message, args) => {
-        var output = await eco.FetchBalance(message.author.id)
-        const BAL = new Discord.RichEmbed()
-        .setColor(0xFACCFA)
-        .setTimestamp()
-        .setThumbnail(message.author.displayAvatarURL)
-        .addField("Available Balance", output.balance + "coins")
-        .setFooter(client.user.username, client.user.iconURL)
-        message.channel.send(BAL);
-    }
-}
+    usage: "[@user_mention/user_id]",
+	run: async(client, message, args) => {
+        let target = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
+
+    if(target.user.bot) return reply(`Seems like **${target.user.username}** is a bot.`);
+
+    Money.findOne({
+        userID: target.user.id,
+        serverID: message.guild.id
+    }, async (err, money) => {
+        let balanceEmbed = new Discord.RichEmbed()
+        .setAuthor(target.user.tag, target.user.displayAvatarURL)
+        .setColor("#54a041");
+
+        if(!money) {
+            balanceEmbed.setDescription(`- ${target.user.tag} • 0 Coins`)
+        } else if(money) {
+            balanceEmbed.setDescription(`- ${target.user.tag} • ${money.coins.toLocaleString()} Coins`)
+        }
+
+        message.reply(balanceEmbed);
+    });
+    },
+};
