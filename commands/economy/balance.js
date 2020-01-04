@@ -5,16 +5,15 @@ const dbUrl = process.env.mongodb;
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
 });
 
 module.exports = {
     name: 'balance',
-	description: 'Check user\'s balance for current server.',
+    description: 'Check user\'s balance for current server.',
     aliases: [`bal`],
     category: "economy",
     usage: "[@user_mention/user_id]",
-	run: async(client, message, args) => {
+    run: async(client, message, args) => {
         let target = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
 
     if(target.user.bot) return message.channel.send(`Seems like **${target.user.username}** is a bot.`);
