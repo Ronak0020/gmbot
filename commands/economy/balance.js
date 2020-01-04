@@ -5,6 +5,7 @@ const dbUrl = process.env.mongodb;
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
+    useUnifiedTopology: true
 });
 
 module.exports = {
