@@ -6,7 +6,7 @@ let coinCooldown = new Set();
 
 const Money = require("../models/money.js");
 const Module = require("../models/module.js");
-const dbUrl = process.env.mongodb;
+const dbUrl = process.env.MONGODBURL;
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
