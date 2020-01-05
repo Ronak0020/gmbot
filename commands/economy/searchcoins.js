@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
 const dbUrl = process.env.MONGODBURL;
+const cooldown = new Set();
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
@@ -12,7 +13,11 @@ module.exports = {
     description: 'Search far and wide for coins.',
     category: "economy",
     run: async(client, message, args) => {
-        Money.findOne({
+if (cooldown.has(message.author.id)) {
+            message.channel.send("Wait `1 minute` before using this command again. - " + message.author);
+    } else {
+
+           Money.findOne({
             userID: message.author.id,
             serverID: message.guild.id
         }, async (err, money) => {
@@ -48,5 +53,14 @@ module.exports = {
 
             }
         });
+
+        // Adds the user to the set so that they can't talk for a minute
+        cooldown.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          cooldown.delete(message.author.id);
+        }, 60000);
+    }
+        
     },
 };
