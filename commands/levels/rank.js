@@ -9,7 +9,7 @@ module.exports = {
     run: async(client, message, args) => {
         const target = message.mentions.users.first() || message.author; // Grab the target.
  
-const user = await Levels.fetch(target.id, message.guild.id); // Selects the target from the database.
+const user = await Levels.fetch(target.id, message.guild.id, 1000); // Selects the target from the database.
  
 if (!user) return message.channel.send("Seems like this user has not earned any xp so far."); // If there isnt such user in the database, we send a message in general.
 const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id);
