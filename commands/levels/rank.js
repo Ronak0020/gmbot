@@ -14,7 +14,7 @@ const user = await Levels.fetch(target.id, message.guild.id, 1000); // Selects t
 if (!user) return message.channel.send("Seems like this user has not earned any xp so far."); // If there isnt such user in the database, we send a message in general.
 const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id);
 const leader = Levels.computeLeaderboard(client, rawLeaderboard);
-const position = leader.map(user => `${user.position}`);
+const position = leader(user => `${user.position}`);
  
 const embed = new Discord.RichEmbed()
 .setTitle("Rank", target.displayAvatarURL)
