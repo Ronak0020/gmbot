@@ -16,7 +16,7 @@ module.exports = {
 
         let dailyCoins = 250;
 if (talkedRecently.has(message.author.id)) {
-            message.channel.send("Wait 1 day to get your daily bonus again. - " + msg.author);
+            message.channel.send("Wait 1 day to get your daily bonus again. - " + message.author);
     } else {
 
            Money.findOne({
