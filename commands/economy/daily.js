@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
 const dbUrl = process.env.MONGODBURL;
+const talkedRecently = new Discord.Set();
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
@@ -14,8 +15,11 @@ module.exports = {
 	run: async(client, message, args) => {
 
         let dailyCoins = 250;
+if (talkedRecently.has(msg.author.id)) {
+            msg.channel.send("Wait 1 day to get your daily bonus again. - " + msg.author);
+    } else {
 
-        Money.findOne({
+           Money.findOne({
             userID: message.author.id,
             serverID: message.guild.id
         }, async (err, money) => {
@@ -35,5 +39,13 @@ module.exports = {
         });
 
         message.channel.send(`${message.author.username} You got a daily bonus of ${dailyCoins} coins.`);
-    },
+
+        talkedRecently.add(msg.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a day
+          talkedRecently.delete(msg.author.id);
+        }, 86400000);
+    }
+
+         },
 };
