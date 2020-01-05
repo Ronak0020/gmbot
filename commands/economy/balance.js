@@ -4,7 +4,7 @@ const Money = require("../../models/money.js");
 const dbUrl = process.env.MONGODBURL;
 
 mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
+    useNewUrlParser: true
 });
 
 module.exports = {
