@@ -18,7 +18,7 @@ const lb = leaderboard.map(e => `**${e.position}.** ${e.username}#${e.discrimina
  .setTitle('LEADERBOARD:')
  .setDescription(`${lb.join("\n\n")}`)
  .setColor('RANDOM')
- .setFooter(client.user.username, client.user.iconURL)
+ .setFooter(client.user.username, client.user.displayAvatarURL)
  .setTimestamp()
 message.channel.send(rlb);
     }
