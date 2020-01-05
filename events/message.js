@@ -10,6 +10,7 @@ const dbUrl = process.env.MONGODBURL;
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 module.exports = {
