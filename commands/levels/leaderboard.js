@@ -7,7 +7,7 @@ module.exports = {
     description: "Check out whgo is at highest rank in the server!",
     aliases: ["rlb", "levellb"],
     run: async(client, message, args) => {
-        const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 10); // We grab top 10 users with most xp in the current server.
+        const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 5); // We grab top 10 users with most xp in the current server.
  
 if (rawLeaderboard.length < 1) return reply("Nobody's in leaderboard yet.");
  
