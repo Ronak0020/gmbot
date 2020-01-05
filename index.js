@@ -65,7 +65,13 @@ client.on('guildMemberAdd', async member => {
         const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
         if (hasLeveledUp) {
           const user = await Levels.fetch(message.author.id, message.guild.id);
-          message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
+          const lvlup = new RichEmbed()
+          .setTitle("Level Up! :tada:")
+          .setDescription(`Congratulations __**${message.author.tag}**__! You have leveled up!Keep it up!\n**New Level:** **${user.level}`)
+          .setColor('RANDOM')
+          .setFooter(client.user.username, client.user.displayAvatarURL)
+          .setTimestamp()
+          message.channel.send(`${message.author}`, lvlup);
         }
       });
 
