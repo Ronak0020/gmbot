@@ -67,7 +67,7 @@ client.on('guildMemberAdd', async member => {
           const user = await Levels.fetch(message.author.id, message.guild.id);
           const lvlup = new RichEmbed()
           .setTitle("Level Up! :tada:")
-          .setDescription(`Congratulations __**${message.author.tag}**__! You have leveled up!Keep it up!\n**New Level:** **${user.level}`)
+          .setDescription(`Congratulations __**${message.author.tag}**__! You have leveled up! Keep it up!\n**New Level:** **${user.level}**`)
           .setColor('RANDOM')
           .setFooter(client.user.username, client.user.displayAvatarURL)
           .setTimestamp()
