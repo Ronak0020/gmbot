@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
 const dbUrl = process.env.MONGODBURL;
-const talkedRecently = new Discord.Set();
+const talkedRecently = new Set();
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
