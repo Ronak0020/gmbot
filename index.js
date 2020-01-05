@@ -2,7 +2,7 @@ const { Client, Collection, RichEmbed } = require("discord.js");
 const fs = require("fs");
 const giveaways = require("discord-giveaways");
 const Levels = require("discord-xp");
-Levels.setURL(process.env.MONGODBURL);
+Levels.setURL("mongodb+srv://gmbot:123gmbot@giveawaymbot-ldyp5.mongodb.net/test?retryWrites=true&w=majority");
 
 const client = new Client({
     disableEveryone: true
