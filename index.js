@@ -2,7 +2,7 @@ const { Client, Collection, RichEmbed } = require("discord.js");
 const fs = require("fs");
 const giveaways = require("discord-giveaways");
 const Levels = require("discord-xp");
-Levels.setURL("mongodb+srv://gmbot:123gmbot@giveawaymbot-ldyp5.mongodb.net/test?retryWrites=true&w=majority");
+Levels.setURL(process.env.MONGODBURL);
 
 const client = new Client({
     disableEveryone: true
@@ -61,7 +61,7 @@ client.on('guildMemberAdd', async member => {
         if (!message.guild) return;
         if (message.author.bot) return;
         
-        const randomAmountOfXp = Math.floor(Math.random() * 15) + 1;
+        const randomAmountOfXp = Math.floor(Math.random() * 9) + 1;
         const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
         if (hasLeveledUp) {
           const user = await Levels.fetch(message.author.id, message.guild.id);
