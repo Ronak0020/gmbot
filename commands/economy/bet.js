@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
 const dbUrl = process.env.MONGODBURL;
+const cooldown = new Set();
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
@@ -16,8 +17,11 @@ module.exports = {
         if(!args[0]) return message.channel.send("Please specify the amount you wanna bet!");
         let bet = parseInt(args[0]);
         if(!bet || isNaN(bet)) return message.channel.send("Please specify a valid amount of coins to bet.");
+if (cooldown.has(message.author.id)) {
+            message.channel.send("Wait `1 minute` before using this command again. - " + message.author);
+    } else {
 
-        Money.findOne({
+           Money.findOne({
             userID: message.author.id,
             serverID: message.guild.id
         }, async (err, money) => {
@@ -40,5 +44,15 @@ module.exports = {
                 cm.edit(`Well played, you just won ${bet} coins.`);
             }
         });
+
+        // Adds the user to the set so that they can't talk for a minute
+        cooldown.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          cooldown.delete(message.author.id);
+        }, 60000);
+    }
+
+        
     },
 };
