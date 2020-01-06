@@ -12,7 +12,7 @@ module.exports = {
         }
       try {
       const author = message.author.username;
-      const user = message.mentions.users.first() || message.guild.members.get(args[0]);
+      const user = message.mentions.users.first().username;
       if(!user) return message.reply("Please mention a person whom you wanna tickle! (ㆁωㆁ)").then(m => m.delete(5000));
       const data = await (await fetch('https://nekos.life/api/v2/img/tickle')).json();
       if (!(data || data.url)) return message.reply('NO_DATA').then(m => m.delete(5000));
