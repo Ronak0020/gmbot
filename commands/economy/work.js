@@ -14,7 +14,7 @@ module.exports = {
     description: 'Work and earn coins.',
     category: "economy",
     run: async(client, message, args) => {
-        let earnedCoins = Math.floor(Math.random() * 69) + 1;
+        let earnedCoins = Math.floor(Math.random() * 149) + 1;
 if (cooldown.has(message.author.id)) {
             message.channel.send("Wait `1 hour` before using this command again. - " + message.author);
     } else {
