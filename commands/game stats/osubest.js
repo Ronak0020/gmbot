@@ -13,6 +13,7 @@ module.exports = {
     description: "Check out your best 3 scores in osu!",
     usage: "<osu username>",
     run: async(client, message, args) => {
+        const msg = await message.reply(`:loading: Loading your osu best scores! It might take few seconds...`);
         osuApi.getUserBest({ u: args[0] }).then(scores => {
             const best = new Discord.RichEmbed()
             .setTitle("3 Best Scores")
@@ -29,7 +30,7 @@ module.exports = {
             .addField("Accuricy during this score:", scores[2].accuracy, true)
             .setFooter(client.user.username, client.user.displayAvatarURL)
             .setTimestamp()
-            message.channel.send(best);
+            msg.edit(best);
         });
     }
 }
