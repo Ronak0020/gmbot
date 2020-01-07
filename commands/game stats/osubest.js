@@ -13,7 +13,7 @@ module.exports = {
     description: "Check out your best 3 scores in osu!",
     usage: "<osu username>",
     run: async(client, message, args) => {
-        const msg = await message.reply(`:loading: Loading your osu best scores! It might take few seconds...`);
+        const msg = await message.reply(`<a:loading:664055598874099732> Loading your osu best scores! It might take few seconds...`);
         osuApi.getUserBest({ u: args[0] }).then(scores => {
             const best = new Discord.RichEmbed()
             .setTitle("3 Best Scores")
