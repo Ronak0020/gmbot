@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 module.exports = {
 	name: "owoify",
 	category: "actions",
-	description: "\"Convert texts into "OwOify\"",
+	description: "Convert texts into OwOify",
         usage: "<text>",
 	run: async (client, message, args) => {
         if (message.deletable) {
