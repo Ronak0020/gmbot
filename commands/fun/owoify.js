@@ -11,7 +11,7 @@ module.exports = {
             message.delete();
         }
       try {
-      const data = await (await fetch('https://nekos.life/api/v2/owoify?text=${args.join("+")})).json();
+      const data = await (await fetch(`https://nekos.life/api/v2/owoify?text=${args.join("+")}`)).json();
       if (!(data || data.url)) return message.reply('NO_DATA').then(m => m.delete(5000));
            message.channel.send(data);
     } catch (error) {
