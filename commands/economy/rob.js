@@ -1,8 +1,7 @@
-//IT IS IN DEVELOPMENT
-
 const Discord = require('discord.js');
 const mongoose = require('mongoose');
 const dbUrl = process.env.MONGODBURL;
+const cooldown = new Set();
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true
@@ -16,6 +15,9 @@ module.exports = {
     aliases: ["steal", "robbery"],
     run: async(client, message, args) => {
         await message.delete()
+        if (cooldown.has(message.author.id)) {
+          message.channel.send("Wait `30 seconds` before using this command again. - " + message.author);
+  } else {
 
         let target = message.mentions.members.first();
         if (!target || target.id === message.author.id) return message.reply("Mention a valid member whom you wanna rob! (You also cant rob yourself!)").then(m => m.delete(5000));
@@ -53,5 +55,11 @@ module.exports = {
           }
       
         )
+        cooldown.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          cooldown.delete(message.author.id);
+        }, 30000);
+    }
         }
 }
