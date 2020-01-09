@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const giveaways = require("discord-giveaways");
-const ms = require("ms"); // npm install ms
+const ms = require("ms");
 
 module.exports = {
     name: "giveaway",
