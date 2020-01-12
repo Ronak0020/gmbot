@@ -8,13 +8,11 @@ module.exports = {
     usage: "<mention> <role name, role mention>",
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply(`**You do not have permission to use this command!**\n Please contact a staff member.`);
-        const humans = message.guild.members.filter(member => !member.user.bot);
-        const bots = message.guild.members.filter(member => member.user.bot);
-        let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]) || humans || bots;
+        let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
         if (!rMember) return message.channel.send(`Cant fine the user! please try again!`);
         let role = args.join(" ").slice(22);
         if (!role) return message.reply("Specify a role!");
-        let gRole = message.guild.roles.find(`name`, role) || message.mentions.roles.first();
+        let gRole = message.guild.roles.find(`name`, role);
         if (!gRole) return message.reply("Couldn't find that role.");
       
         if (rMember.roles.has(gRole.id)) return message.reply("They already have that role.");
