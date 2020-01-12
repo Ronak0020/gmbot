@@ -17,6 +17,6 @@ module.exports = {
       
         if (rMember.roles.has(gRole.id)) return message.reply("They already have that role.");
         await (rMember.addRole(gRole.id));
-          message.channel.send(`Congrats to ${rMember.username}, they have been given the role ${gRole.name}.`)
+          message.channel.send(`Congrats to <@${rMember.id}>, they have been given the role ${gRole.name}.`)
         }
       }
