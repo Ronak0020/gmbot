@@ -8,7 +8,7 @@ module.exports = {
     usage: "<input>",
     run: (client, message, args) => {
         message.delete();
-
+        if(!message.member.hasPermission(["ADMINISTRATOR"])) return message.reply("You do not have permission to use this command!").then(m => m.delete(5000));
         if (args.length < 0)
             return message.reply("Nothing to say?").then(m => m.delete(5000));
 
