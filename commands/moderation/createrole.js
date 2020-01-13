@@ -5,11 +5,11 @@ module.exports = {
  category: 'moderation',
  description: "Create a role in your server easily!",
  aliases: ["crole", "newrole", "nrole"],
- usage: "<Role name> [Role color hex code]",
+ usage: "<hex color code (#000000 for none)> <Role name>",
  run: async(client, message, args) => {
  const server = message.guild;
- const rolename = args.slice(0, 1).join(" ");
- const rolecolor = args.slice(rolename).join("");
+ const rolename = args.slice(1).join(" ");
+ const rolecolor = args[0];
  if(!message.member.hasPermission(["MANAGE_ROLES"])) return message.reply("Sorry you do not have **Manage Roles** permission!");
  if(message.author.bot) return;
  if(!rolename) return message.reply("Please provide a name for the role!");
