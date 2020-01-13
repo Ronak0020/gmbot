@@ -13,6 +13,7 @@ module.exports = {
             return message.reply("Nothing to say?").then(m => m.delete(5000));
 
         const roleColor = message.guild.me.highestRole.hexColor;
+        if(message.content.includes("@everyone")) return message.reply("I will not pong everyone baka!");
 
         if (args[0] === "embed") {
             const embed = new RichEmbed()
