@@ -8,8 +8,8 @@ module.exports = {
     run: async(client, message, args) => {
       if(!message.member.hasPermission(["ADMINISTRATOR"])) return message.reply("You do not have permission to start a poll!");
         if (!message.guild.member(client.user).hasPermission('ADD_REACTIONS')) return message.reply('Sorry, i dont have the perms to do this cmd i need ADD_REACTIONS. :x:')
-      const sayMessage = args.join(" ");
-      const channel = message.guild.mentions.channels.first() || message.guild.channels.find(c => c.name === "poll");
+      const sayMessage = args.slice(1).join(" ");
+      const channel = message.guild.mentions.channels.first();
      if (sayMessage.length < 1) return message.channel.send("Didnt provide anything for the poll.")
      if (message.member.hasPermission("KICK_MEMBERS")) {
        const embed = new Discord.RichEmbed()
