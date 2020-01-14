@@ -15,7 +15,7 @@ module.exports = {
     run: async(client, message, args) => {
         const msg = await message.channel.send('(\\\\°□°)\\\\  ┬─┬');
         for (const frame of frames) {
-            setTimeout(() => {}, 4000);
+            setTimeout(() => {}, 8000);
             await msg.edit(frame);
         }
         return message;
