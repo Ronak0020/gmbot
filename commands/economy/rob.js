@@ -19,8 +19,9 @@ module.exports = {
           message.channel.send("Wait `30 seconds` before using this command again. - " + message.author);
   } else {
 
-        let target = message.mentions.members.first();
+        let target = message.mentions.members.first() || message.guild.members.get(args[0]);
         if (!target || target.id === message.author.id) return message.reply("Mention a valid member whom you wanna rob! (You also cant rob yourself!)").then(m => m.delete(5000));
+        if(target.id === "625877119989186570") return message.reply("You are not allowed to rob my God! Go and search someone else!").then(m => m.delete(5000));
       
         Coins.findOne({
           userID: message.author.id,
