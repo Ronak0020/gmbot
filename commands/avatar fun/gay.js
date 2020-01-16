@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const snekfetch = require('./node_modules/snekfetch');
+const snekfetch = require('snekfetch');
 
 module.exports = {
     name: "gay",
