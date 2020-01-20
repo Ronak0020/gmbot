@@ -87,7 +87,7 @@ client.on("message", async message => {
     const prefix = '_';
 
     if (message.author.bot) return;
-    if(message.mentions.users.first().id === client.user.id) message.reply("Hello there! My prefix is `_`\nType `_help` for a list of commands!").then(m => m.delete(5000));
+    if(message.mentions.users.first().id === client.user.id) return message.reply("Hello there! My prefix is `_`\nType `_help` for a list of commands!").then(m => m.delete(5000));
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
     if (!message.member) message.member = await message.guild.fetchMember(message);
