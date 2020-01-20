@@ -10,6 +10,7 @@ const client = new Client({
 
 client.commands = new Collection();
 client.aliases = new Collection();
+client.afk = new Map();
 
 client.categories = fs.readdirSync("./commands/");
 
@@ -76,6 +77,13 @@ client.on('guildMemberAdd', async member => {
       });
 
 client.on("message", async message => {
+	if(message.content.includes(message.mentions.users.first())) {
+        if(message.author.bot) return;
+        let mentioned = client.afk.get(message.mentions.users.first().id);
+        if(mentioned) message.channel.send(`**${mentioned.tag}** is currently afk. Reason: ${mentioned.reason}`);
+    }
+    let afkcheck = client.afk.get(message.author.id);
+    if(afkcheck) return [client.afk.delete(message.author.id), message.reply(`Welcome back **${message.author.tag}!** I removed your afk.`).then(m => m.delete(5000))];
     const prefix = '_';
 
     if (message.author.bot) return;
