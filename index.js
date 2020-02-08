@@ -58,23 +58,23 @@ client.on('guildMemberAdd', async member => {
           });
     });
 
-    client.on("message", async message => {
-        if (!message.guild) return;
-        if (message.author.bot) return;
+    //client.on("message", async message => {
+        //if (!message.guild) return;
+        //if (message.author.bot) return;
         
-        const randomAmountOfXp = Math.floor(Math.random() * 9) + 1;
-        const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
-        if (hasLeveledUp) {
-          const user = await Levels.fetch(message.author.id, message.guild.id);
-          const lvlup = new RichEmbed()
-          .setTitle("Level Up! :tada:")
-          .setDescription(`Congratulations __**${message.author.tag}**__! You have leveled up! Keep it up!\n**New Level:** **${user.level}**`)
-          .setColor('RANDOM')
-          .setFooter(client.user.username, client.user.displayAvatarURL)
-          .setTimestamp()
-          message.channel.send(`${message.author}`, lvlup);
-        }
-      });
+        //const randomAmountOfXp = Math.floor(Math.random() * 9) + 1;
+        //const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+        //if (hasLeveledUp) {
+          //const user = await Levels.fetch(message.author.id, message.guild.id);
+          //const lvlup = new RichEmbed()
+          //.setTitle("Level Up! :tada:")
+          //.setDescription(`Congratulations __**${message.author.tag}**__! You have leveled up! Keep it up!\n**New Level:** **${user.level}**`)
+          //.setColor('RANDOM')
+          //.setFooter(client.user.username, client.user.displayAvatarURL)
+          //.setTimestamp()
+          //message.channel.send(`${message.author}`, lvlup);
+        //}
+      //});
 
 client.on("message", async message => {
 	if(message.content.includes(message.mentions.users.first())) {
