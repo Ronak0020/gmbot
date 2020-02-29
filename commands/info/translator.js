@@ -10,12 +10,12 @@ module.exports = {
     run: async(client, message, args) => {
         translate(args.slice(1).join(" "), {to: args[0]}).then(res => {
             const trl = new Discord.RichEmbed()
-            .setTitle(client.user.username + `\'s Translator! (${res.from.language.iso} » ${args[0]})`)
-            .setAuthor(message.author.username, message.author.displayAvatarURL)
+            .setTitle(client.user.username + `\'s Translator!`)
+            .setAuthor(`${res.from.language.iso} » ${args[0]}`)
             .setColor('RANDOM')
             .setTimestamp()
             .setFooter(client.user.username, client.user.displayAvatarURL)
-            .setDescription(`**Input:** ${args.slice(1).join(" ")}\n\n**Translation:** ${res.text}`)
+            .setDescription(`**Translation:** ${res.text}`)
             message.channel.send(trl)
         }).catch(err => {
             message.reply("An error occured! \n" + err);
